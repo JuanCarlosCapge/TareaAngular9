@@ -1,0 +1,10 @@
+<br>
+<ul>
+  <li *ngFor="let segundo of dias; let i = index">
+    {{i+1}} - {{segundo}}
+</li>
+<button (click)="borrarNombre()">borrar Día</button>
+
+<p>Día Borrado {{DiaBorrado}}</p>
+
+</ul>
