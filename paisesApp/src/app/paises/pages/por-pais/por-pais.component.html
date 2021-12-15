@@ -1,67 +1,21 @@
+
+
+<p>pais-tabla works!</p>
 <h2>Por pais</h2>
 <hr>
 
 <div class="row">
   <div class="col">
-    <!-- ngSubmit es el evento -->
-    <form (ngSubmit)="buscar()" autocomplete="off">
-        <input
-        type="text"
-        name="termino"
-        class="from-control"
-        [(ngModel)]="termino"
-        placeholder="buscar pais...">
-    </form>
-
+    <app-pais-input (onEnter)="buscar( $event )"></app-pais-input>
   </div>
 </div>
-
 <hr>
-<div *ngIf="error"
-class="alert alert-danger">
+<div *ngIf="error" class="alert alert-danger">
   No se encontro nada con la busqueda ingresada
 </div>
 
-<div *ngIf="!error" class="row">
+<div class="row" *ngIf="!error" >
   <div class="col">
-    <table class="table table-hover">
-      <thead>
-        <tr>
-          <th>#</th>
-          <th>Bandera</th>
-          <th>Nombre</th>
-          <th>Pobacion</th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>1</td>
-          <td>bandera</td>
-          <td>nombre</td>
-          <td>212324</td>
-          <td>
-            <a href="#">Ver...</a>
-
-          </td>
-        </tr>
-      </tbody>
-      <tbody>
-
-        <tr *ngFor="let item of paises; let i = index">
-          <td>{{ i+1 }}</td>
-          <td>
-            <img style="width: 50px;" [src]="item.flags.png" alt="">
-          </td>
-          <td>{{item.name.common}}</td>
-          <td>{{item.population | number}}</td>
-          <td>
-            <!-- si pulsamos el ver una vez buscado el pais te tienes que que redireccionar a ver pais -->
-            <a [routerLink]="['/pais',item.cca2]">Ver...</a>
-          </td>
-        </tr>
-      </tbody>
-
-    </table>
+    <app-pais-tabla [paises]="paises"></app-pais-tabla>
   </div>
 </div>

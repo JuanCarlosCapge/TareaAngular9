@@ -17,8 +17,10 @@ export class PorPaisComponent implements OnInit {
 // llamamos al servicio por el constructor
   constructor(private paisservice: PaisService) { }
 
-buscar(){
+buscar(termino: string){
+
   this.error = false;
+  this.termino= termino;
   console.log(this.termino);
   this.paisservice.buscarPais(this.termino)
   .subscribe((resp) =>{
