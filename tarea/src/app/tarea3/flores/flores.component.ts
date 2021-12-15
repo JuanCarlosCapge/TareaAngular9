@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FloresService } from 'src/app/service/flores.service';
 
 @Component({
   selector: 'app-flores',
@@ -8,15 +9,14 @@ import { Component, OnInit } from '@angular/core';
 export class FloresComponent  {
 
   title = 'tarea';
+  constructor (private floresService:FloresService){
+  }
 
-
-  flores:string[] = ["Rosa","Margarita","Petunia","Cardo","Azafran","Mentolada"]
-
-
+  flores: string[] = this.floresService.flores;
 
   borrarNombre(){
-    this.flores = []
-
+  this.floresService.borrarNombre();
+  this.flores = this.floresService.flores;
   }
 
 

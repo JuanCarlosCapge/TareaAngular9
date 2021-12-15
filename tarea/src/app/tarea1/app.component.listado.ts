@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { MesesService } from '../service/meses.service';
 
 @Component({
   selector: 'app-tarea1',
@@ -8,16 +9,15 @@ import { Component } from '@angular/core';
 
 export class Tarea1Component {
   title = 'tarea';
+constructor(private mesesService:MesesService){}
 
+get meses(): string[]{
+  return this.mesesService.meses;
+}
 
-  meses:string[] = ["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto"
-  ,"Septiembre","octubre","Novimbre","Diciembre"]
-  MesBorrado:string |undefined = "";
-
-
-  borrarNombre(){
-   this.MesBorrado = this.meses.pop();
-
-  }
+//meses: string[]= this.mesesService.meses;
+  borrarNombre(): void{
+    this.mesesService.borrarNombre()
+}
 
 }

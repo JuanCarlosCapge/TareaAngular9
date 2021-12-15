@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { DiasService } from '../service/dias.service';
 
 @Component({
   selector: 'app-tarea2',
@@ -8,15 +9,17 @@ import { Component } from '@angular/core';
 
 export class Tarea2Component {
   title = 'Dias';
+constructor (private diasService:DiasService){
 
-  dias:string[] = ["Lunes","Martes","Miercoles","Jueves","Viernes","Sababdo","Domingo"]
-  DiaBorrado:string |undefined = "";
+}
+
+get dias(): string[] {
+  return this.diasService.dias;
+}
 
 
   borrarNombre(){
-   this.DiaBorrado = this.dias.pop();
-
-
+   this.diasService.borrarNombre();
   }
 
 }
